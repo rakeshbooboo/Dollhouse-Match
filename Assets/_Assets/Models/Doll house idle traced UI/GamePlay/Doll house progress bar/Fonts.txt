@@ -1,0 +1,4 @@
+Progress bar details:-
+
+
+Font used inside bar is EncodeSansCondensed-Bold _color code white

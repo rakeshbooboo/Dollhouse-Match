@@ -1,0 +1,16 @@
+
+ Doll house idle HUD details:-
+
+.Font used_PoetsenOne_color code white and 555555
+
+
+.upper score patch should be streach or squesh
+ from center accoding to your need(see reference)
+
+
+.tint color code is_383838 with 30% opacity
+
+
+.have to set according to attecd HUD screen
+
+ Thanks :-

@@ -1,0 +1,2 @@
+
+tint color is 383838 with 30 %opacity
