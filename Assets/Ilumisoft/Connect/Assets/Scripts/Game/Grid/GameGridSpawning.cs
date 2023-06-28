@@ -23,8 +23,10 @@
         /// <returns></returns>
         public IEnumerator RespawnElements()
         {
-            GameSFX.Instance.Play(GameSFX.Instance.SpawnClip);
-
+            if (PlayerPrefs.GetInt("Sound") == 0)
+            {
+                GameSFX.Instance.Play(GameSFX.Instance.SpawnClip, 1f);
+            }
             foreach (GameGridElement element in this.grid.Elements)
             {
                 if (element.IsSpawned == false)
@@ -77,13 +79,16 @@
                 }
             }
 
-            if (checkSound)
+            if (PlayerPrefs.GetInt("Sound") == 0)
             {
-                GameSFX.Instance.Play(GameSFX.Instance.DespawnClip);
-            }
-            else
-            {
-                GameSFX.Instance.Play(GameSFX.Instance.DespawnClip2);
+                if (checkSound)
+                {
+                    GameSFX.Instance.Play(GameSFX.Instance.DespawnClip);
+                }
+                else
+                {
+                    GameSFX.Instance.Play(GameSFX.Instance.DespawnClip2);
+                }
             }
 
             foreach (GameGridElement gridElement in elements)

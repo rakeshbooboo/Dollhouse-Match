@@ -197,8 +197,11 @@
         {
             if (this.SelectedElements.Count > 0)
             {
-                float pitch = 1.0f + this.SelectedElements.Count * 0.1f;
-                GameSFX.Instance.Play(GameSFX.Instance.SelectionClip, pitch);
+                if (PlayerPrefs.GetInt("Sound") == 0)
+                {
+                    float pitch = 1.0f + this.SelectedElements.Count * 0.1f;
+                    GameSFX.Instance.Play(GameSFX.Instance.SelectionClip, pitch);
+                }
             }
 
             this.SelectedElements.Add(element);

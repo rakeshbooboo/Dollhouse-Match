@@ -67,13 +67,16 @@ public class Tutorial : MonoBehaviour
         int randomNo = Random.Range(0, newGridElementList.Count);
         for (int k = 0; k < newGridElementList.Count; k++)
         {
-            if (newGridElementList[randomNo].spriteRenderer.sprite == newGridElementList[k].spriteRenderer.sprite)
+            if (newGridElementList[randomNo].spriteRenderer != null && newGridElementList[k].spriteRenderer != null)
             {
-                if (Vector3.Distance(newGridElementList[randomNo].transform.position, newGridElementList[k].transform.position) <= 1.0f)
+                if (newGridElementList[randomNo].spriteRenderer.sprite == newGridElementList[k].spriteRenderer.sprite)
                 {
-                    randomNo = k;
-                    //newGridElementList[k].spriteRenderer.color = Color.green;
-                    validObjList.Add(newGridElementList[k].gameObject);
+                    if (Vector3.Distance(newGridElementList[randomNo].transform.position, newGridElementList[k].transform.position) <= 1.0f)
+                    {
+                        randomNo = k;
+                        //newGridElementList[k].spriteRenderer.color = Color.green;
+                        validObjList.Add(newGridElementList[k].gameObject);
+                    }
                 }
             }
             //else

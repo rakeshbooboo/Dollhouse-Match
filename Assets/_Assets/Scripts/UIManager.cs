@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using Ilumisoft.Connect.Game;
 public class UIManager : MonoBehaviour
 {
     public static UIManager In;
@@ -125,6 +126,10 @@ public class UIManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("Sound", 0);
             soundImg.sprite = soundOnSprite;
+            if (PlayerPrefs.GetInt("Sound") == 0)
+            {
+                GameSFX.Instance.Play(GameSFX.Instance.btnClick, 1f);
+            }
         }
     }
     public void MusicFunc()
@@ -133,11 +138,17 @@ public class UIManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("Music", 1);
             musicImg.sprite = musicOffSprite;
+            GameSFX.Instance.PauseBG();
         }
         else
         {
             PlayerPrefs.SetInt("Music", 0);
             musicImg.sprite = musicOnSprite;
+            GameSFX.Instance.ResumeBG();
+        }
+        if (PlayerPrefs.GetInt("Sound") == 0)
+        {
+            GameSFX.Instance.Play(GameSFX.Instance.btnClick, 1f);
         }
     }
     public void VibrateFunc()
@@ -152,6 +163,10 @@ public class UIManager : MonoBehaviour
             PlayerPrefs.SetInt("Vibrate", 0);
             vibrateImg.sprite = vibrateOnSprite;
         }
+        if (PlayerPrefs.GetInt("Sound") == 0)
+        {
+            GameSFX.Instance.Play(GameSFX.Instance.btnClick, 1f);
+        }
     }
 
     public void SettingFunc()
@@ -165,6 +180,10 @@ public class UIManager : MonoBehaviour
         {
             SettingOff();
             isSettingBool = false;
+        }
+        if (PlayerPrefs.GetInt("Sound") == 0)
+        {
+            GameSFX.Instance.Play(GameSFX.Instance.btnClick, 1f);
         }
     }
 
@@ -219,11 +238,19 @@ public class UIManager : MonoBehaviour
 
     public void Add5Moves()
     {
+        if (PlayerPrefs.GetInt("Sound") == 0)
+        {
+            GameSFX.Instance.Play(GameSFX.Instance.btnClick, 1f);
+        }
         Ilumisoft.Connect.Game.GameManager.In.Add5Moves();
     }
 
     public void Btn_LevelComplete()
     {
+        if (PlayerPrefs.GetInt("Sound") == 0)
+        {
+            GameSFX.Instance.Play(GameSFX.Instance.btnClick, 1f);
+        }
         PlayerPrefs.SetInt("LvlNo", PlayerPrefs.GetInt("LvlNo") + 1);
         GamePlayManager.In.CreateGameManager();
         //LoadScene();
@@ -231,6 +258,10 @@ public class UIManager : MonoBehaviour
 
     public void Btn_LevelFail()
     {
+        if (PlayerPrefs.GetInt("Sound") == 0)
+        {
+            GameSFX.Instance.Play(GameSFX.Instance.btnClick, 1f);
+        }
         LoadScene();
     }
 

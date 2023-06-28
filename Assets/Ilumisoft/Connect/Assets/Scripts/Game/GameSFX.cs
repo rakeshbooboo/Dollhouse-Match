@@ -27,10 +27,15 @@
         [SerializeField]
         public AudioClip SpawnClip;
 
+        [SerializeField]
+        public AudioClip btnClick;
+
+
         /// <summary>
         /// Local AudioSource used to play the SelectionClip with different pitches
         /// </summary>
         private AudioSource audioSource;
+        public AudioSource bgMusic;
 
         /// <summary>
         /// Get all required components
@@ -40,6 +45,21 @@
             base.Awake();
 
             this.audioSource = GetComponent<AudioSource>();
+        }
+
+        private void Start()
+        {
+            this.bgMusic.Play();
+        }
+
+        public void PauseBG()
+        {
+            this.bgMusic.Pause();
+        }
+
+        public void ResumeBG()
+        {
+            this.bgMusic.Play();
         }
 
         /// <summary>
